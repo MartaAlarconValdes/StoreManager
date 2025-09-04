@@ -27,7 +27,8 @@ Permite **crear, buscar, actualizar, eliminar y visualizar** muebles de la base 
 
 ## 📸 Capturas de pantalla
 
-- **Vista de la aplicación**  
+- **Vista de la aplicación**
+  
   ![Vista de la aplicación](docs/app.png)
 
 **Proyecto con fines de práctica en .NET, SQL Server y Arquitectura de 3 capas.**
