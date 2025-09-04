@@ -38,8 +38,13 @@ namespace StoreManager
             listSearch.Add(textBoxSearchPrice);
             listSearch.Add(textBoxSearchStock);
 
-            
-            products = new Products(listTextBox, listLabel, dataGridView, listSearch);
+            var listUpdate = new List<TextBox>();
+            listUpdate.Add(textBoxIDUpdate);
+            listUpdate.Add(textBoxNameUpdate);
+            listUpdate.Add(textBoxPriceUpdate);
+            listUpdate.Add(textBoxStockUpdate);
+
+            products = new Products(listTextBox, listLabel, dataGridView, listSearch, listUpdate);
             products.ShowProducts();
 
         }
@@ -108,8 +113,38 @@ namespace StoreManager
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            products.ShowProductByNameOrID(textBoxSearch.Text);
+            products.SelectProductByNameOrID(textBoxSearch.Text);
             textBoxSearch.Text = string.Empty;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            products.UpdateProduct();
+        }
+
+        private void textBoxIDUpdate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBoxEvent.numKeyPress(e);
+        }
+
+        private void textBoxNameUpdate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBoxEvent.textKeyPress(e);
+        }
+
+        private void textBoxPriceUpdate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBoxEvent.decimalKeyPress(e);
+        }
+
+        private void textBoxStockUpdate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBoxEvent.numKeyPress(e);
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            products.DeleteProduct();
         }
     }
 }

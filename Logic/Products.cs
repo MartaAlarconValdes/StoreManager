@@ -18,12 +18,77 @@ namespace Logic
         private DataGridView dataGridView;
         private Product product;
         private List<TextBox> listSearch;
-        public Products(List<TextBox> listTextBox, List<Label> listLabel, DataGridView dataGridView, List<TextBox> listSearch)
+        private List<TextBox> listUpdate;
+        public Products(List<TextBox> listTextBox, List<Label> listLabel, DataGridView dataGridView, List<TextBox> listSearch, List<TextBox> listUpdate)
         {
             this.listTextBox = listTextBox;
             this.listLabel = listLabel;
             this.dataGridView = dataGridView;
             this.listSearch = listSearch;
+            this.listUpdate = listUpdate;
+        }
+
+        public void DeleteProduct()
+        {
+            using (var db = new Connection())
+            {
+                if (!string.IsNullOrWhiteSpace(listSearch[0].Text))
+                {
+                    var product = _Product
+                        .Where(p => p.ID.ToString() == listSearch[0].Text).FirstOrDefault();
+
+                    db.Delete(product);
+                    ShowProducts();
+
+                    foreach (var tb in listUpdate)
+                            tb.Text = string.Empty;
+
+                        foreach (var tb in listSearch)
+                            tb.Text = string.Empty;
+                    
+                }
+            }
+        }
+
+        public void UpdateProduct()
+        {
+            bool hasError = false;
+
+            for (int i = 0; i < listUpdate.Count; i++)
+            {
+                if (string.IsNullOrWhiteSpace(listUpdate[i].Text))
+                {
+                    if (!hasError) listTextBox[i].Focus(); // foco en el primer error
+                    hasError = true;
+                }
+
+            }
+
+            if (hasError) return;
+
+            using (var db = new Connection())
+            {
+                if (!string.IsNullOrWhiteSpace(listSearch[0].Text))
+                {
+                    var product = _Product
+                        .Where(p => p.ID.ToString() == listSearch[0].Text).FirstOrDefault();
+                    if (product != null)
+                    {
+                        product.ID = int.Parse(listUpdate[0].Text);    
+                        product.Name = listUpdate[1].Text;
+                        product.Price = decimal.Parse(listUpdate[2].Text, CultureInfo.InvariantCulture);
+                        product.Stock = int.Parse(listUpdate[3].Text);
+                        db.Update(product);
+                        ShowProducts();
+
+                        foreach (var tb in listUpdate)
+                            tb.Text = string.Empty;
+
+                        foreach (var tb in listSearch)
+                            tb.Text = string.Empty;
+                    }
+                }
+            }
         }
 
         public void ShowProducts()
@@ -43,7 +108,7 @@ namespace Logic
             }
         }
 
-        public void ShowProductByNameOrID(string search)
+        public void SelectProductByNameOrID(string search)
         {
             var product = _Product
                 .Where(s => s.ID.ToString() == search
