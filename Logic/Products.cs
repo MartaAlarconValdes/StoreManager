@@ -15,12 +15,57 @@ namespace Logic
     {
         private List<TextBox> listTextBox;
         private List<Label> listLabel;
-
-        public Products(List<TextBox> listTextBox, List<Label> listLabel)
+        private DataGridView dataGridView;
+        private Product product;
+        private List<TextBox> listSearch;
+        public Products(List<TextBox> listTextBox, List<Label> listLabel, DataGridView dataGridView, List<TextBox> listSearch)
         {
             this.listTextBox = listTextBox;
             this.listLabel = listLabel;
+            this.dataGridView = dataGridView;
+            this.listSearch = listSearch;
         }
+
+        public void ShowProducts()
+        {
+            List<Product> query = new List<Product>();
+            query = _Product.ToList();
+            if (query.Count > 0) 
+            {
+                dataGridView.DataSource = query.Select(p => new
+                {
+                    p.nid,
+                    p.ID,
+                    p.Name,
+                    p.Price,
+                    p.Stock
+                }).ToList();
+            }
+        }
+
+        public void ShowProductByNameOrID(string search)
+        {
+            var product = _Product
+                .Where(s => s.ID.ToString() == search
+                         || s.Name.ToUpper().Contains(search.ToUpper()))
+                .FirstOrDefault();
+
+            if (product != null)
+            {
+                listSearch[0].Text = product.ID.ToString();
+                listSearch[1].Text = product.Name;
+                listSearch[2].Text = product.Price.ToString(CultureInfo.InvariantCulture);
+                listSearch[3].Text = product.Stock.ToString();
+            }
+            else
+            {
+                MessageBox.Show("No products found");
+                foreach (var tb in listSearch)
+                    tb.Text = string.Empty;
+            }
+        }
+
+
 
         public void CreateProduct()
         {
@@ -49,19 +94,34 @@ namespace Logic
 
             using (var db = new Connection())
             {
-                var rows = db.Insert(new Product() // Insertar en base de datos
-
+                BeginTransactionAsync();
+                try
                 {
-                    ID = int.Parse(listTextBox[0].Text),
-                    Name = listTextBox[1].Text,
-                    Price = decimal.Parse(listTextBox[2].Text, CultureInfo.InvariantCulture), //Coge el punto como referencia para crear el decimal
-                    Stock = int.Parse(listTextBox[3].Text),
-                });
+                    var rows = db.Insert(new Product() // Insertar en base de datos
 
-                //MessageBox.Show($"Filas insertadas: {rows}");
+                    {
+                        ID = int.Parse(listTextBox[0].Text),
+                        Name = listTextBox[1].Text,
+                        Price = decimal.Parse(listTextBox[2].Text, CultureInfo.InvariantCulture), //Coge el punto como referencia para crear el decimal
+                        Stock = int.Parse(listTextBox[3].Text),
+                    });
+                    CommitTransaction();
+                    ShowProducts();
+                    //MessageBox.Show($"Filas insertadas: {rows}");
+
+                    for (int i = 0; i < listTextBox.Count; i++)
+                    {
+                        listTextBox[i].Text = string.Empty;
+                    }
+                }
+                catch (Exception)
+                {
+                    RollbackTransaction();
+                }
+                
             }
 
-            MessageBox.Show("Product inserted correctly ✅");
+            
         }
    
     }
