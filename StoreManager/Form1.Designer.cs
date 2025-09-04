@@ -48,14 +48,14 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label16 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBoxIDUpdate = new System.Windows.Forms.TextBox();
+            this.textBoxStockUpdate = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBoxNameUpdate = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBoxPriceUpdate = new System.Windows.Forms.TextBox();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxSearchID = new System.Windows.Forms.TextBox();
@@ -313,14 +313,14 @@
             this.groupBox4.BackColor = System.Drawing.Color.SeaShell;
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Controls.Add(this.button1);
-            this.groupBox4.Controls.Add(this.textBox3);
-            this.groupBox4.Controls.Add(this.textBox4);
+            this.groupBox4.Controls.Add(this.textBoxIDUpdate);
+            this.groupBox4.Controls.Add(this.textBoxStockUpdate);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.textBox7);
+            this.groupBox4.Controls.Add(this.textBoxNameUpdate);
             this.groupBox4.Controls.Add(this.label15);
-            this.groupBox4.Controls.Add(this.textBox8);
+            this.groupBox4.Controls.Add(this.textBoxPriceUpdate);
             this.groupBox4.Controls.Add(this.buttonDelete);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.textBoxSearchID);
@@ -368,28 +368,31 @@
             this.button1.Size = new System.Drawing.Size(45, 21);
             this.button1.TabIndex = 17;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox3
+            // textBoxIDUpdate
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.textBox3.BackColor = System.Drawing.Color.Snow;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(462, 111);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(213, 24);
-            this.textBox3.TabIndex = 13;
+            this.textBoxIDUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.textBoxIDUpdate.BackColor = System.Drawing.Color.Snow;
+            this.textBoxIDUpdate.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxIDUpdate.Location = new System.Drawing.Point(462, 111);
+            this.textBoxIDUpdate.Multiline = true;
+            this.textBoxIDUpdate.Name = "textBoxIDUpdate";
+            this.textBoxIDUpdate.Size = new System.Drawing.Size(213, 24);
+            this.textBoxIDUpdate.TabIndex = 13;
+            this.textBoxIDUpdate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxIDUpdate_KeyPress);
             // 
-            // textBox4
+            // textBoxStockUpdate
             // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.textBox4.BackColor = System.Drawing.Color.Snow;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(462, 287);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(213, 24);
-            this.textBox4.TabIndex = 16;
+            this.textBoxStockUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.textBoxStockUpdate.BackColor = System.Drawing.Color.Snow;
+            this.textBoxStockUpdate.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxStockUpdate.Location = new System.Drawing.Point(462, 287);
+            this.textBoxStockUpdate.Multiline = true;
+            this.textBoxStockUpdate.Name = "textBoxStockUpdate";
+            this.textBoxStockUpdate.Size = new System.Drawing.Size(213, 24);
+            this.textBoxStockUpdate.TabIndex = 16;
+            this.textBoxStockUpdate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStockUpdate_KeyPress);
             // 
             // label9
             // 
@@ -431,16 +434,17 @@
             this.label11.TabIndex = 16;
             this.label11.Text = "new Stock";
             // 
-            // textBox7
+            // textBoxNameUpdate
             // 
-            this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.textBox7.BackColor = System.Drawing.Color.Snow;
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(462, 167);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(213, 24);
-            this.textBox7.TabIndex = 14;
+            this.textBoxNameUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.textBoxNameUpdate.BackColor = System.Drawing.Color.Snow;
+            this.textBoxNameUpdate.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNameUpdate.Location = new System.Drawing.Point(462, 167);
+            this.textBoxNameUpdate.Multiline = true;
+            this.textBoxNameUpdate.Name = "textBoxNameUpdate";
+            this.textBoxNameUpdate.Size = new System.Drawing.Size(213, 24);
+            this.textBoxNameUpdate.TabIndex = 14;
+            this.textBoxNameUpdate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNameUpdate_KeyPress);
             // 
             // label15
             // 
@@ -455,16 +459,17 @@
             this.label15.TabIndex = 15;
             this.label15.Text = "new Price";
             // 
-            // textBox8
+            // textBoxPriceUpdate
             // 
-            this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.textBox8.BackColor = System.Drawing.Color.Snow;
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(462, 225);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(213, 24);
-            this.textBox8.TabIndex = 15;
+            this.textBoxPriceUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.textBoxPriceUpdate.BackColor = System.Drawing.Color.Snow;
+            this.textBoxPriceUpdate.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPriceUpdate.Location = new System.Drawing.Point(462, 225);
+            this.textBoxPriceUpdate.Multiline = true;
+            this.textBoxPriceUpdate.Name = "textBoxPriceUpdate";
+            this.textBoxPriceUpdate.Size = new System.Drawing.Size(213, 24);
+            this.textBoxPriceUpdate.TabIndex = 15;
+            this.textBoxPriceUpdate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPriceUpdate_KeyPress);
             // 
             // buttonDelete
             // 
@@ -484,6 +489,7 @@
             this.buttonDelete.Size = new System.Drawing.Size(45, 21);
             this.buttonDelete.TabIndex = 12;
             this.buttonDelete.UseVisualStyleBackColor = false;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // label7
             // 
@@ -691,14 +697,14 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBoxIDUpdate;
+        private System.Windows.Forms.TextBox textBoxStockUpdate;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBoxNameUpdate;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBoxPriceUpdate;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBoxSearchID;
