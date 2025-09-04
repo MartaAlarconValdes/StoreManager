@@ -32,10 +32,19 @@ namespace StoreManager
             listLabel.Add(labelPrice);
             listLabel.Add(labelStock);
 
-            products = new Products(listTextBox, listLabel);
+            var listSearch = new List<TextBox>();
+            listSearch.Add(textBoxSearchID);
+            listSearch.Add(textBoxSearchName);
+            listSearch.Add(textBoxSearchPrice);
+            listSearch.Add(textBoxSearchStock);
+
+            
+            products = new Products(listTextBox, listLabel, dataGridView, listSearch);
+            products.ShowProducts();
+
         }
 
-    
+
         private void textBoxID_KeyPress(object sender, KeyPressEventArgs e)
         {
             TextBoxEvent.numKeyPress(e);
@@ -95,6 +104,12 @@ namespace StoreManager
                 labelStock.Text = "Stock";
                 labelStock.ForeColor = Color.Sienna;
             }
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            products.ShowProductByNameOrID(textBoxSearch.Text);
+            textBoxSearch.Text = string.Empty;
         }
     }
 }
